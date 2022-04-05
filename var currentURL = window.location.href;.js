@@ -1,3 +1,1 @@
-var currentURL = window.location.href;
-
-console.log(currentURL)
+console.log(myToken)
