@@ -45,33 +45,33 @@ function sendEvent(event) {
     .then(data => console.log(data))
 }
 
-function sendClickEvent(e) {
+// function sendClickEvent(e) {
 
-    if (checkTraceable(e.target, 5)) {
-        const eventTime = new Date().toISOString().slice(0, 21);
+//     if (checkTraceable(e.target, 5)) {
+//         const eventTime = new Date().toISOString().slice(0, 21);
 
-        const data =
-        {
-            "event_id": document.title + "_click_" + eventTime,
-            "event_type": "click",
-            "page_path": window.location.pathname,
-            "user_ip": metadata.ip,
-            "user_city": metadata.city,
-            "user_country_code": metadata.country_code,
-            "user_country_name": metadata.country_name,
-            "user_timezone": metadata.timezone,
-            "user_languages": metadata.languages,
-            "user_os": window.navigator.platform,
-            "is_mobile": isMobile(),
-            "click_text": e.target.innerHTML,
-            "click_id": e.target.id,
-            "click_class": e.target.className,
-            "event_time": new Date().toISOString()
-        };
+//         const data =
+//         {
+//             "event_id": document.title + "_click_" + eventTime,
+//             "event_type": "click",
+//             "page_path": window.location.pathname,
+//             "user_ip": metadata.ip,
+//             "user_city": metadata.city,
+//             "user_country_code": metadata.country_code,
+//             "user_country_name": metadata.country_name,
+//             "user_timezone": metadata.timezone,
+//             "user_languages": metadata.languages,
+//             "user_os": window.navigator.platform,
+//             "is_mobile": isMobile(),
+//             "click_text": e.target.innerHTML,
+//             "click_id": e.target.id,
+//             "click_class": e.target.className,
+//             "event_time": new Date().toISOString()
+//         };
 
-        sendEvent(data);
-    }
-}
+//         sendEvent(data);
+//     }
+// }
 
 
 const eventTime = new Date().toISOString().slice(0, 21);
