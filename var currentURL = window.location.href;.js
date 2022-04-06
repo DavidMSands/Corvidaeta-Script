@@ -73,7 +73,6 @@ function sendClickEvent(e) {
     }
 }
 
-document.body.addEventListener("click", sendClickEvent, false);
 
 const eventTime = new Date().toISOString().slice(0, 21);
 
