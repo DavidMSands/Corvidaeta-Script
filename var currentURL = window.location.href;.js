@@ -2,7 +2,7 @@
 let triggers = ['A', 'BUTTON'];
 let metadata = [];
 let script = document.getElementsByClassName('corvidaeta_script')
-let generated_proj_id = script.id
+let generated_proj_id = script[0].id
 let referral_site = 'unknown'
 
 if (document.referrer && document.referrer != "") {
