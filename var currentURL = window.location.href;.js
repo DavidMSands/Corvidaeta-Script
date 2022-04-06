@@ -1,7 +1,7 @@
 
 const triggers = ['A', 'BUTTON'];
 const metadata = [];
-const script = document.getElementByClassName('corvidaeta_script')
+const script = document.getElementsByClassName('corvidaeta_script')
 const generated_proj_id = script.id
 let referral_site = 'unknown'
 
