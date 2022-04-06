@@ -32,7 +32,7 @@ function checkTraceable(node, i) {
 
 
 function sendEvent(event) {
-    fetch(`http://localhost:3000/${generated_proj_id}`, {
+    fetch(`http://localhost:3000/create_analytics/${generated_proj_id}`, {
         method: 'POST',
         mode: 'no-cors',
         body: JSON.stringify(event),
