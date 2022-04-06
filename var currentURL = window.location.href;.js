@@ -1,4 +1,3 @@
-
 let triggers = ['A', 'BUTTON'];
 let metadata = [];
 let script = document.getElementsByClassName('corvidaeta_script')
@@ -33,24 +32,24 @@ function checkTraceable(node, i) {
 
 function sendEvent(event) {
     fetch(`http://localhost:3000/create_analytics/${generated_proj_id}`, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify(event),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
+    method: 'POST', 
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(event)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log(data)
+    })
 }
+
+
 
 function sendClickEvent(e) {
 
     if (checkTraceable(e.target, 5)) {
-        let eventTime = new Date().toISOString().slice(0, 21);
+        var eventTime = new Date().toISOString().slice(0, 21);
 
-        let data =
+        var data =
         {
             "event_id": document.title + "_click_" + eventTime,
             "event_type": "click",
@@ -59,8 +58,12 @@ function sendClickEvent(e) {
             "user_city": metadata.city,
             "user_country_code": metadata.country_code,
             "user_country_name": metadata.country_name,
+            "user_country_region": metadata.region,
+            "user_continent": metadata.continent_code,
             "user_timezone": metadata.timezone,
             "user_languages": metadata.languages,
+            "user_in_eu": metadata.in_eu,
+            "user_agent": window.navigator.userAgent,
             "user_os": window.navigator.platform,
             "is_mobile": isMobile(),
             "click_text": e.target.innerHTML,
@@ -73,36 +76,42 @@ function sendClickEvent(e) {
     }
 }
 
-// document.body.addEventListener("click", sendClickEvent, false);
+// MAIN
+console.log("Analytics Loaded");
 
-let eventTime = new Date().toISOString().slice(0, 21);
+document.body.addEventListener("click", sendClickEvent, false);
+
+var eventTime = new Date().toISOString().slice(0, 21);
 
 fetch('https://ipapi.co/json/').then(function (response) {
     return response.json();
 }).then(d => {
-    
     metadata = d;
-    let data =
+    var data =
     {
         "event_id": document.title + "_view_" + eventTime,
         "event_type": "view",
         "page_path": window.location.pathname,
-        "referral_site": referral_site,
         "user_ip": metadata.ip,
         "user_city": metadata.city,
         "user_country_code": metadata.country_code,
         "user_country_name": metadata.country_name,
+        "user_country_region": metadata.region,
+        "user_continent": metadata.continent_code,
         "user_timezone": metadata.timezone,
         "user_languages": metadata.languages,
+        "user_in_eu": metadata.in_eu,
+        "user_agent": window.navigator.userAgent,
         "user_os": window.navigator.platform,
         "is_mobile": isMobile(),
         "event_time": new Date().toISOString()
     };
+    console.log(data)
 
     sendEvent(data);
 }).catch(e => {
     console.error("IP Error: ", e);
-    let data =
+    var data =
     {
         "event_id": document.title + "_view_" + eventTime,
         "event_type": "view",
