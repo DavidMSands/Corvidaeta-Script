@@ -140,10 +140,18 @@ fetch('https://ipapi.co/json/').then(function (response) {
 };
 
     function beforeUnload() {
-    const endDate = new Date();
-    const spentTime = endDate.getTime() - startDate.getTime();
-    elapsedTime += spentTime;
-    sendTime()
+        const endDate = new Date();
+        const spentTime = endDate.getTime() - startDate.getTime();
+        elapsedTime += spentTime;
+        const newObj = {
+                elapsed: elapsedTime
+            }
+            fetch(`http://localhost:3000/create_durations/${generated_proj_id}`, {
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newObj)
+            }), 
+            keepalive: true
     // elapsedTime contains the time spent on page in milliseconds
 };
 
