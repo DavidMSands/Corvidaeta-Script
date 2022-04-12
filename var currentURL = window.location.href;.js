@@ -143,7 +143,7 @@ fetch('https://ipapi.co/json/').then(function (response) {
     const endDate = new Date();
     const spentTime = endDate.getTime() - startDate.getTime();
     elapsedTime += spentTime;
-    
+    sendTime()
     // elapsedTime contains the time spent on page in milliseconds
 };
 
