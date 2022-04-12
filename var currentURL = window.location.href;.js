@@ -147,25 +147,16 @@ fetch('https://ipapi.co/json/').then(function (response) {
                 elapsed: elapsedTime
             }
             fetch(`http://localhost:3000/create_durations/${generated_proj_id}`, {
+            keepalive: true,
             method: 'POST', 
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newObj)
-            }), 
-            keepalive: true
+            })
+            
     // elapsedTime contains the time spent on page in milliseconds
 };
 
-    function sendTime() {
-        const newObj = {
-            elapsed: elapsedTime
-        }
-        fetch(`http://localhost:3000/create_durations/${generated_proj_id}`, {
-        method: 'POST', 
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newObj)
-        }), 
-        keepalive: true
-    }
+   
 
 
 window.addEventListener('focus', focus);
