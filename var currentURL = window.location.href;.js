@@ -161,4 +161,4 @@ fetch('https://ipapi.co/json/').then(function (response) {
 
 window.addEventListener('focus', focus);
 window.addEventListener('blur', blur);
-window.addEventListener('beforeunload', beforeunload);
+window.addEventListener('beforeunload', beforeUnload);
