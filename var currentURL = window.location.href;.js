@@ -155,7 +155,8 @@ fetch('https://ipapi.co/json/').then(function (response) {
         method: 'POST', 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newObj)
-        })
+        }), 
+        keepalive: true
     }
 
 
