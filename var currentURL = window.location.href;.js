@@ -2,7 +2,7 @@ let triggers = ['A', 'BUTTON'];
 let metadata = [];
 let script = document.getElementsByClassName('corvidaeta_script')
 let generated_proj_id = script[0].id
-let referral_site = 'unknown'
+let referral_site = 'Direct'
 
 if (document.referrer && document.referrer != "") {
     referral_site = document.referrer
@@ -74,6 +74,7 @@ function sendClickEvent(e) {
         };
 
         sendEvent(data);
+        referral_site = 0
     }
 }
 
