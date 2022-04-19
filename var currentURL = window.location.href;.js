@@ -39,7 +39,9 @@ function sendEvent(event) {
     .then(res => res.json())
     .then(data => {
       console.log(data)
+      referral_site = 0
     })
+    referral_site = 0
 }
 
 
